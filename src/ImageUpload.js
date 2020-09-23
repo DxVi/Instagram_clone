@@ -1,9 +1,10 @@
-import { Button, Input } from '@material-ui/core'
+import { Button, FormControl, Input } from '@material-ui/core'
 import React, { useState } from 'react'
 import {storage, db} from './firebase';
 import firebase from 'firebase';
+import './ImageUpload.css';
 
-function ImageUpload(props) {
+function ImageUpload({username}) {
     const [image, setImage] = useState(null);
     const [progress, setProgress] = useState(0);
     const [caption, setCaption] = useState('');
@@ -41,7 +42,7 @@ function ImageUpload(props) {
                     db.collection('posts').add({
                         caption: caption,
                         imageUrl: url,
-                        username: props.username,
+                        username: username,
                         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                     });
                     setProgress(0);
@@ -54,13 +55,17 @@ function ImageUpload(props) {
     }
 
     return (
-        <div>
-            <progress value={progress} max="100" />
-            <Input type="text" value={caption} onChange={event => setCaption(event.target.value)} placeholder="Enter a caption..." />
-            <Input type="file" onChange={handleChange} />
-            <Button onClick={handleUpload}>
-                Upload
-            </Button>
+        <div className="imageupload">
+            <form>
+                <FormControl>
+                <progress className="imageupload__progress" value={progress} max="100" />
+                <Input type="text" value={caption} onChange={event => setCaption(event.target.value)} placeholder="Enter a caption..." />
+                <Input type="file" onChange={handleChange} />
+                <Button disabled={!image || !caption} color="primary" onClick={handleUpload}>
+                    Upload
+                </Button>
+                </FormControl>    
+            </form>
         </div>
     )
 }
