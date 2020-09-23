@@ -11,6 +11,9 @@
 }
 
 .app__header{
+  position: sticky;
+  top: 0;
+  z-index: 1;
   display:flex;
   justify-content: space-between;
   align-items: center;
@@ -25,7 +28,7 @@
 
 .app__posts{
   flex-basis: 90%;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 
   display: flex;
   justify-content: center;
