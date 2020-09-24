@@ -226,7 +226,7 @@ function App() {
             // <Post username="Cess" caption="What an experience!" imageUrl="../14.jpg" />
           }
         </div>
-        <div className="app__postsRight">
+        {/* <div className="app__postsRight">
           <InstagramEmbed
             url='https://www.instagram.com/p/B_uf9dmAGPw/'
             maxWidth={320}
@@ -239,7 +239,7 @@ function App() {
             onAfterRender={() => {}}
             onFailure={() => {}}
           />
-        </div>
+        </div> */}
       </div>
 
       <div className="image__upload">
